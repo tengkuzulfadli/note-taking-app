@@ -50,58 +50,58 @@ export default function App () {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-      <Text style={styles.header}>Note Taking App</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter note here"
-        value={noteText}
-        onChangeText={setNoteText}
-      />
-      <View style={styles.dropdownContainer}>
-        <Text>Client:</Text>
-        <View style={styles.dropdown}>
-          {clients.map((client) => (
-            <TouchableOpacity
-              key={client.id}
-              onPress={() => setSelectedClient(client.name)}
-            >
-              <Text style={selectedClient === client.name ? styles.selected : null}>
-                {client.name}
-              </Text>
-            </TouchableOpacity>
-          ))}
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Text style={styles.header}>Note Taking App</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter note here"
+          value={noteText}
+          onChangeText={setNoteText}
+        />
+        <View style={styles.dropdownContainer}>
+          <Text>Client:</Text>
+          <View style={styles.dropdown}>
+            {clients.map((client) => (
+              <TouchableOpacity
+                key={client.id}
+                onPress={() => setSelectedClient(client.name)}
+              >
+                <Text style={selectedClient === client.name ? styles.selected : null}>
+                  {client.name}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
-      </View>
-      <View style={styles.dropdownContainer}>
-        <Text>Category:</Text>
-        <View style={styles.dropdown}>
-          {categories.map((category) => (
-            <TouchableOpacity
-              key={category.id}
-              onPress={() => setSelectedCategory(category.name)}
-            >
-              <Text style={selectedCategory === category.name ? styles.selected : null}>
-                {category.name}
-              </Text>
-            </TouchableOpacity>
-          ))}
+        <View style={styles.dropdownContainer}>
+          <Text>Category:</Text>
+          <View style={styles.dropdown}>
+            {categories.map((category) => (
+              <TouchableOpacity
+                key={category.id}
+                onPress={() => setSelectedCategory(category.name)}
+              >
+                <Text style={selectedCategory === category.name ? styles.selected : null}>
+                  {category.name}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
-      </View>
-      <TouchableOpacity style={styles.button} onPress={addNote}>
-        <Text style={styles.buttonText}>Add Note</Text>
-      </TouchableOpacity>
-      {notes.length > 0 ? (
-        <FlatList
-          data={notes}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.noteContainer}>
-              <Text>{item}</Text>
-            </View>)}
-        />) : null
-      }
+        <TouchableOpacity style={styles.button} onPress={addNote}>
+          <Text style={styles.buttonText}>Add Note</Text>
+        </TouchableOpacity>
+        {notes.length > 0 ? (
+          <FlatList
+            data={notes}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => (
+              <View style={styles.noteContainer}>
+                <Text>{item}</Text>
+              </View>)}
+          />) : null
+        }
       </View>
     </SafeAreaView>
     )
