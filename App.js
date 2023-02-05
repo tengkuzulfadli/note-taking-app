@@ -37,7 +37,13 @@ export default function App () {
 
   const addNote = () => {
 
-    setNotes([...notes, { text: noteText, client: selectedClient, category: selectedCategory }]);
+    setNotes([...notes, 
+      { 
+        text: noteText, 
+        client: selectedClient, 
+        category: selectedCategory 
+      }
+    ]);
     setNoteText('');
     setSelectedClient('');
     setSelectedCategory('');
